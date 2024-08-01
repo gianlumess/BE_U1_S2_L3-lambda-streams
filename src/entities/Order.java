@@ -2,19 +2,20 @@ package entities;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 
 public class Order {
     //ATTRIBUTI
-    private long id;
+    private final long id;
     private String status;
     private LocalDate orderDate;
     private LocalDate deliveryDate;
     private List<Product> products;
     private Customer customer;
-    
+
     //COSTRUTTORE
-    public Order(long id, String status, LocalDate orderDate, LocalDate deliveryDate, List<Product> products, Customer customer) {
-        this.id = id;
+    public Order(String status, LocalDate orderDate, LocalDate deliveryDate, List<Product> products, Customer customer) {
+        this.id = generateId();
         this.status = status;
         this.orderDate = orderDate;
         this.deliveryDate = deliveryDate;
@@ -23,6 +24,12 @@ public class Order {
     }
 
     //METODI
+
+    private long generateId() {
+        Random rndm = new Random();
+        return 1 + rndm.nextInt(1000);
+    }
+
     public String getStatus() {
         return status;
     }

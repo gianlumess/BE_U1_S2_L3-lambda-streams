@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static enums.CategoryProduct.Baby;
+import static enums.CategoryProduct.Boys;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,6 +22,7 @@ public class Main {
         prodotti.add(new Product("Lord of The Rings", CategoryProduct.Books, 150));
         prodotti.add(new Product("Harry Potter e la pietra filosofale", CategoryProduct.Books, 12));
         prodotti.add(new Product("Passeggino", Baby, 120));
+        prodotti.add(new Product("skateboard", Boys, 80));
 
         //CREO ORDINI
         List<Order> orders = new ArrayList<>();
@@ -31,10 +33,12 @@ public class Main {
         Product lordBook = prodotti.get(0);
         Product harryBook = prodotti.get(1);
         Product passeggino = prodotti.get(2);
+        Product skate = prodotti.get(3);
 
         aldoOrder.addProduct(lordBook);
         aldoOrder.addProduct(harryBook);
         giovanniOrder.addProduct(harryBook);
+        giovanniOrder.addProduct(skate);
         giacomoOrder.addProduct(passeggino);
         giacomoOrder.addProduct(lordBook);
 
@@ -58,5 +62,16 @@ public class Main {
 
         List<Order> babyOrders = orders.stream().filter(order -> order.getProducts().stream().anyMatch(product -> product.getCategory().equals(Baby))).toList();
         babyOrders.forEach(System.out::println);
+
+        System.out.println("*******************ESERCIZIO 3********************");
+        System.out.println("OTTENERE UNA LISTA DI PRODOTTI CHE APPARTENGONO ALLA CATEGORIA 'BOYS' ED APPLICARE UN 10% DI SCONTO AL LORO PREZZO");
+
+        List<Product> boys10Discount = prodotti.stream().filter(product -> product.getCategory().equals(Boys)).map(product -> {
+            product.setPrice(product.getPrice() * 0.90);
+            return product;
+        }).toList();
+
+        boys10Discount.forEach(System.out::println);
+
     }
 }

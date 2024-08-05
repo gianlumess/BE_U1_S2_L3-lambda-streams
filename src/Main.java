@@ -6,6 +6,8 @@ import enums.CategoryProduct;
 import java.util.ArrayList;
 import java.util.List;
 
+import static enums.CategoryProduct.Baby;
+
 public class Main {
     public static void main(String[] args) {
         //CREO DEI CUSTOMERS
@@ -18,7 +20,7 @@ public class Main {
         List<Product> prodotti = new ArrayList<>();
         prodotti.add(new Product("Lord of The Rings", CategoryProduct.Books, 150));
         prodotti.add(new Product("Harry Potter e la pietra filosofale", CategoryProduct.Books, 12));
-        prodotti.add(new Product("Passeggino", CategoryProduct.Baby, 120));
+        prodotti.add(new Product("Passeggino", Baby, 120));
 
         //CREO ORDINI
         List<Order> orders = new ArrayList<>();
@@ -54,6 +56,7 @@ public class Main {
         System.out.println("*******************ESERCIZIO 2********************");
         System.out.println("OTTENERE UNA LISTA DI ORDINI CON PRODOTTI CHE APPARTENGONO ALLA CATEGORIA 'BABY'");
 
-
+        List<Order> babyOrders = orders.stream().filter(order -> order.getProducts().stream().anyMatch(product -> product.getCategory().equals(Baby))).toList();
+        babyOrders.forEach(System.out::println);
     }
 }

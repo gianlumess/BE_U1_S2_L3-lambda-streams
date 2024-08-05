@@ -6,8 +6,7 @@ import enums.CategoryProduct;
 import java.util.ArrayList;
 import java.util.List;
 
-import static enums.CategoryProduct.Baby;
-import static enums.CategoryProduct.Boys;
+import static enums.CategoryProduct.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -54,7 +53,7 @@ public class Main {
         //OTTENGO UNA LISTA DI PRODOTTI CHE APPARTENGONO ALLA CATEGORIA BOOKS ED HANNO UN PREZZO > 100
         System.out.println("*******************ESERCIZIO 1********************");
         System.out.println("OTTENGO UNA LISTA DI PRODOTTI CHE APPARTENGONO ALLA CATEGORIA BOOKS ED HANNO UN PREZZO > 100");
-        List<Product> priceOver100Books = prodotti.stream().filter(element -> element.getCategory().equals("Books") && element.getPrice() > 100).toList();
+        List<Product> priceOver100Books = prodotti.stream().filter(element -> element.getCategory().equals(Books) && element.getPrice() > 100).toList();
         priceOver100Books.forEach(System.out::println);
 
         System.out.println("*******************ESERCIZIO 2********************");
@@ -72,6 +71,9 @@ public class Main {
         }).toList();
 
         boys10Discount.forEach(System.out::println);
+
+
+        System.out.println("*******************ESERCIZIO 4********************");
 
     }
 }

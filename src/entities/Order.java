@@ -1,6 +1,7 @@
 package entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -14,16 +15,19 @@ public class Order {
     private Customer customer;
 
     //COSTRUTTORE
-    public Order(String status, LocalDate orderDate, LocalDate deliveryDate, List<Product> products, Customer customer) {
+    public Order(Customer customer) {
         this.id = generateId();
-        this.status = status;
-        this.orderDate = orderDate;
-        this.deliveryDate = deliveryDate;
-        this.products = products;
+        this.status = "Just created";
+        this.orderDate = LocalDate.now();
+        this.deliveryDate = LocalDate.now().plusDays(5);
+        this.products = new ArrayList<>();
         this.customer = customer;
     }
 
     //METODI
+    public void addProduct(Product p) {
+        products.add(p);
+    }
 
     private long generateId() {
         Random rndm = new Random();
@@ -72,5 +76,17 @@ public class Order {
 
     public long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", orderDate=" + orderDate +
+                ", deliveryDate=" + deliveryDate +
+                ", products=" + products +
+                ", customer=" + customer +
+                '}';
     }
 }

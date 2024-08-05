@@ -1,17 +1,20 @@
 package entities;
 
+import enums.CategoryProduct;
+
 import java.util.Random;
 
 public class Product {
     //ATTRIBUTI
     private final long id;
     private String name;
-    private String category;
+
+    private CategoryProduct category;
     private double price;
 
     //COSTRUTTORE
 
-    public Product(String name, String category, double price) {
+    public Product(String name, CategoryProduct category, double price) {
         this.id = generateId();
         this.name = name;
         this.category = category;
@@ -33,11 +36,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getCategory() {
+    public CategoryProduct getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(CategoryProduct category) {
         this.category = category;
     }
 

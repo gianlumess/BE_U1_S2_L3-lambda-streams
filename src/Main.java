@@ -3,6 +3,7 @@ import entities.Order;
 import entities.Product;
 import enums.CategoryProduct;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +75,15 @@ public class Main {
 
 
         System.out.println("*******************ESERCIZIO 4********************");
+        System.out.println("OTTENERE UNA LISTA DI PRODOTTI ORDINATI DA CLIENTI DI TIER 2 ");
 
+        List<Order> tier2AndDates = orders.stream().filter(order -> order.getCustomer().getTier() == 2 && order.getOrderDate().isBefore(LocalDate.parse("2024-10-06")) && order.getOrderDate().isAfter(LocalDate.parse("2024-08-01"))).toList();
+        List<Product> products2TierCustomers = new ArrayList<>();
+
+        for (Order order : tier2AndDates) {
+            products2TierCustomers.addAll(order.getProducts());
+        }
+
+        products2TierCustomers.forEach(System.out::println);
     }
 }
